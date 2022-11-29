@@ -1,0 +1,84 @@
+//
+// Responsive unit-based height
+//
+
+$utilities: (
+
+  // REM-based height
+
+  "height-rem": (
+    property: height,
+    class: h,
+    responsive: true,
+    values: $height-rem,
+  ),
+
+  // %-based height
+
+  "height": (
+    property: height,
+    class: h,
+    responsive: true,
+    values: $sizes-percents,
+  ),
+
+  // %-based width
+
+  "width": (
+    property: width,
+    class: w,
+    responsive: true,
+    values: $sizes-percents,
+  ),
+
+  // Responsive viewport-based 100% height
+
+  "vh": (
+    property: height,
+    class: vh,
+    responsive: true,
+    values: (
+      100: 100vh
+    ),
+  ),
+
+  // Responsive viewport-based 100% width
+
+  "vw": (
+    property: width,
+    class: vw,
+    responsive: true,
+    values: (
+      100: 100vw
+    ),
+  ),
+
+// Responsive min-viewport-based 100% height
+
+  "min-vh": (
+    property: min-height,
+    class: min-vh,
+    responsive: true,
+    values: (
+      100: 100vh
+    ),
+  ),
+
+  // Responsive min-viewport-based 100% width
+
+  "min-vw": (
+    property: min-width,
+    class: min-vw,
+    responsive: true,
+    values: (
+      100: 100vw
+    ),
+  )
+);
+
+.w-h-100 {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@import "call-utilities-api";

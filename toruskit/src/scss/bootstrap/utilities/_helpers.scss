@@ -1,0 +1,106 @@
+.has-icon {
+  display: inline-flex;
+  align-items: center;
+
+  i,
+  .bi,
+  .btn-icon {
+    margin-left: $has-icon-padding;
+    margin-right: $has-icon-padding;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.links-dark a {
+  color: $links-dark-color;
+
+  &:focus,
+  &:hover {
+    color: $links-dark-hover-color;
+  }
+}
+
+.links-light a {
+  color: $links-light-color;
+
+  &:focus,
+  &:hover {
+    color: $links-light-hover-color;
+  }
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.text-vertical {
+  writing-mode: vertical-lr !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .row-cols#{$infix}-flex {
+      > [class*="col"] {
+        display: flex !important;
+      }
+    }
+  }
+}
+
+.center-both {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-h {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.center-v {
+  display: flex;
+  align-items: center;
+}
+
+//
+// Max / min content
+//
+
+.w-max-content {
+  width: max-content !important;
+}
+
+.w-min-content {
+  width: min-content !important;
+}
+
+.h-min-100 {
+  min-height: 100% !important;
+}
+
+.w-min-100 {
+  min-width: 100% !important;
+}
+
+@-moz-document url-prefix() {
+  [data-tor~="moz-subpixel"],
+  .moz-subpixel {
+    rotate: 0.02deg !important;
+  }
+
+  [data-tor~="moz-subpixel-none"],
+  .moz-subpixel-none {
+    rotate: 0deg !important;
+  }
+}

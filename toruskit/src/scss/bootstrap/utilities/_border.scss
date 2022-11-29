@@ -1,0 +1,53 @@
+@each $name, $value in $all-colors {
+  .border-#{$name} {
+    --tor-border-opacity: 1;
+  }
+}
+
+//
+// Border color
+//
+
+$utilities: (
+  "border-color": (
+    property: border-color,
+    class: border,
+    values: $border-colors-hsla,
+  )
+);
+
+@import "call-utilities-api";
+
+//
+// Sizes
+//
+
+.rounded-xs {
+  border-radius: $border-radius-xs !important;
+}
+
+.rounded-sm {
+  border-radius: $border-radius-sm !important;
+}
+
+.rounded-lg {
+  border-radius: $border-radius-lg !important;
+}
+
+.rounded-xl {
+  border-radius: $border-radius-xl !important;
+}
+
+.rounded-xxl {
+  border-radius: $border-radius-xxl !important;
+}
+
+//
+// Border opacity
+//
+
+@each $variant, $value in $alpha-values {
+  .border-opacity-#{$variant} {
+    --tor-border-opacity: #{$value} !important;
+  }
+}

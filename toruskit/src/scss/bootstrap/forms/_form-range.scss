@@ -1,0 +1,23 @@
+//
+// Form range
+//
+
+.form-range {
+  cursor: $form-range-track-cursor;
+}
+
+.form-range.form-range-tick-marks {
+  &::-moz-range-track {
+    background-image: linear-gradient(to right, black 1px, transparent 0%);
+    background-position: $form-range-thumb-width/2 center;
+    background-size: var(--range-bg) 100%;
+    background-repeat: repeat-x;
+  }
+
+  &::-webkit-slider-runnable-track {
+    background-image: linear-gradient(to right, black 1px, transparent 0%);
+    background-position: $form-range-thumb-width/2 center;
+    background-size: var(--range-bg) 100%;
+    background-repeat: repeat-x;
+  }
+}

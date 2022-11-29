@@ -1,0 +1,69 @@
+//
+// Inputs transparent
+//
+
+.inputs-transparent {
+  .input-group-text,
+  .form-control,
+  .form-select,
+  .form-check-input:not(:checked):not(:active) {
+    background-color: transparent;
+  }
+
+  .form-select:focus,
+  .form-control:focus {
+    background-color: $inputs-transparent-form-control-focus-bg;
+  }
+}
+
+.form-dark.inputs-transparent {
+  .form-control {
+    &::placeholder {
+      color: $inputs-transparent-input-placeholder-color;
+      opacity: 1;
+    }
+  }
+
+  .form-control,
+  .form-select,
+  .form-check-input:not(:checked) {
+    border-color: $form-dark-inputs-transparent-border-color;
+
+    &:hover:not(:disabled) {
+      border-color: $form-dark-inputs-transparent-hover-border-color;
+    }
+
+    &:focus {
+      border-color: $form-dark-inputs-transparent-focus-border-color;
+    }
+  }
+
+  .form-control,
+  .form-select {
+    &:not(:focus) {
+      color: $form-dark-input-color;
+    }
+  }
+
+  .form-check-input:not(:checked) {
+    &:active {
+      background-color: $form-dark-check-active-bg;
+    }
+  }
+
+  .form-switch .form-check-input:not(:checked) {
+    background-image: $form-dark-switch-bg-image;
+
+    &:focus {
+      background-image: $form-dark-switch-focus-bg-image;
+    }
+  }
+
+  .form-select:not(:focus) {
+    background-image: $form-dark-select-indicator;
+  }
+
+  .form-select option {
+    color: initial;
+  }
+}

@@ -1,0 +1,127 @@
+//
+// Return map if enable-*: true or return false if enable-*: false in options
+//
+
+@function return-utility-map($utility) {
+  $map: ();
+
+  @if ($utility == "shadow") {
+    @if($enable-shadows) {
+      $map: (
+        property: box-shadow,
+        class: shadow,
+        values: $shadows,
+      );
+    }
+    @else {
+      $map: false;
+    }
+  }
+
+  @if ($utility == "svg-shadow") {
+    @if($enable-shadows) {
+      $map: (
+        property: filter,
+        class: svg-shadow,
+        values: (
+          null: drop-shadow($shadow),
+          xs: drop-shadow($shadow-xs),
+          sm: drop-shadow($shadow-sm),
+          lg: drop-shadow($shadow-lg),
+          xl: drop-shadow($shadow-xl),
+          pop: drop-shadow($shadow-pop),
+          none: none,
+        )
+      );
+    }
+    @else {
+      $map: false;
+    }
+  }
+
+  @return $map;
+}
+
+
+//
+// SVG color
+// Escape # into %23
+//
+
+@function svg-color($color) {
+  @return str-replace(quote($color), '#', '%23');
+}
+
+//
+// Check if list contains a value
+//
+
+@function contains($list,$var) {
+    @return (null != index($list, $var));
+}
+
+//
+// Fluid sizing
+//
+
+@function fluid-size($value) {
+
+  @if type-of($value) == 'number' and not unitless($value) {
+    $value: $value / ($value * 0 + 1);
+  }
+  @else {
+    $value: $value;
+  }
+
+  @if $value >= 1 {
+    $base: 1 + (($value - 1) * 0.15) + "rem";
+    $vmin: ($value - 1) * 0.5 + "vmin";
+    $vmax: ($value - 1) * 0.5 + "vmax";
+
+    @return calc(#{$base} + #{$vmin} + #{$vmax});
+  }
+  @else {
+    $base: $value / 2 + "rem";
+    $vmin: (($value / 4) + 0.04) + "vmin";
+    $vmax: (($value / 4) + 0.04) + "vmax";
+
+    @return calc(#{$base} + #{$vmin} + #{$vmax});
+  }
+}
+
+@function map-collect($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}
+
+// Replace `$search` with `$replace` in `$string`
+// Used on our SVG icon backgrounds for custom forms.
+//
+// @author Hugo Giraudel
+// @param {String} $string - Initial string
+// @param {String} $search - Substring to replace
+// @param {String} $replace ('') - New value
+// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+//
+// Add value to CSS_PROPERTIES
+//
+
+@function CSS_ADD($list) {
+  $CSS_PROPERTIES: append($CSS_PROPERTIES, $list, "comma");
+  @return $CSS_PROPERTIES;
+}
+

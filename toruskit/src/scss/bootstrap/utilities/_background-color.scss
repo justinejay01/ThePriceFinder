@@ -1,0 +1,62 @@
+@each $name, $value in $all-colors {
+  .bg-#{$name} {
+    --tor-bg-lightness: 1;
+    --tor-bg-opacity: 1;
+  }
+}
+
+//
+// Background color
+//
+
+$utilities: (
+  "background-color": (
+    property: background-color,
+    class: bg,
+    values: map-merge($theme-colors, $bg-colors-hsla),
+  ),
+);
+
+//
+// Opacity parameter
+//
+
+@each $variant, $value in $alpha-values {
+  .bg-opacity-#{$variant} {
+    --tor-bg-opacity: #{$value} !important;
+  }
+}
+
+//
+// Lighten
+//
+
+@each $variant, $value in $color-shading {
+  .bg-lighten-#{$variant} {
+    --tor-bg-lightness: #{1 + $value} !important;
+  }
+}
+
+//
+// Darken
+//
+
+@each $variant, $value in $color-shading {
+  .bg-darken-#{$variant} {
+    --tor-bg-lightness: #{1 - $value} !important;
+  }
+}
+
+//
+// Transparent
+//
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+.bg-inherit {
+  background-color: inherit !important;
+}
+
+@import "../../bootstrap/utilities/call-utilities-api";

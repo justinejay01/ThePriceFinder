@@ -1,0 +1,13 @@
+$utilities: (
+  "z-index": (
+    property: z-index,
+    class: z-index,
+    values: $zindex,
+  ),
+);
+
+@import "call-utilities-api";
+
+.z-index-master {
+  z-index: $zindex-master !important;
+}

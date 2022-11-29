@@ -1,0 +1,23 @@
+//
+// Form select
+//
+
+.form-select {
+  background-clip: padding-box;
+  transition: $form-select-transition;
+
+  &:hover:not(:disabled) {
+    border-color: $form-select-hover-border-color;
+    cursor: $form-select-cursor;
+  }
+
+  &[class*="bg-dark"] {
+    background-color: $dark;
+    border-color: $dark;
+    color: $white;
+
+    &:hover {
+      border-color: $dark;
+    }
+  }
+}

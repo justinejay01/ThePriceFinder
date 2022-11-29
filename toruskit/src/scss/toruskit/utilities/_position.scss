@@ -1,0 +1,15 @@
+//
+// ------------------------------------------------------------------------
+// Position
+// ------------------------------------------------------------------------
+//
+
+$utilities: (
+  "position": (
+    property: position,
+    responsive: true,
+    values: absolute relative fixed,
+  ),
+);
+
+@import "../../bootstrap/utilities/call-utilities-api";

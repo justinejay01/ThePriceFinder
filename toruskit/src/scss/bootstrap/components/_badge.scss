@@ -1,0 +1,13 @@
+.badge {
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.badge.rounded-pill {
+  padding: ($badge-padding-y) ($badge-padding-x + 0.2);
+}
+
+.badge-outline {
+  border-color: currentColor;
+}

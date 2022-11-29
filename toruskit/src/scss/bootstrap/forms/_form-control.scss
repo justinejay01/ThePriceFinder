@@ -1,0 +1,19 @@
+//
+// Form control
+//
+
+.form-control {
+  background-clip: padding-box;
+
+  &:hover:not(:disabled) {
+    border-color: $input-hover-border-color;
+  }
+}
+
+.form-clean {
+  .form-control {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

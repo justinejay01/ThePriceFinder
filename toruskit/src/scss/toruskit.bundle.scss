@@ -1,0 +1,135 @@
+/*!
+ * Torus Kit FREE v2.0 (https://toruskit.com/)
+ * Copyright 2021 Torus Kit
+ *
+ * Bootstrap v5.0.1 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+@import "./../bootstrap/scss/functions";
+@import "./../bootstrap/scss/mixins";
+
+//
+// ------------------------------------------------------------------------
+// Torus Kit customization
+// ------------------------------------------------------------------------
+//
+
+@import "./functions";
+@import "./variables.bundle";
+
+//
+// ------------------------------------------------------------------------
+// Bootstrap core
+// ------------------------------------------------------------------------
+//
+
+// Configuration
+
+@import "./../bootstrap/scss/variables";
+
+// Bootstrap Utilities
+
+@import "./../bootstrap/scss/utilities";
+
+// Layout & components
+
+@import "./../bootstrap/scss/root";
+@import "./../bootstrap/scss/reboot";
+@import "./../bootstrap/scss/type";
+@import "./../bootstrap/scss/images";
+@import "./../bootstrap/scss/containers";
+@import "./../bootstrap/scss/grid";
+@import "./../bootstrap/scss/tables";
+@import "./../bootstrap/scss/forms";
+@import "./../bootstrap/scss/buttons";
+@import "./../bootstrap/scss/transitions";
+@import "./../bootstrap/scss/dropdown";
+@import "./../bootstrap/scss/button-group";
+@import "./../bootstrap/scss/nav";
+@import "./../bootstrap/scss/navbar";
+@import "./../bootstrap/scss/card";
+@import "./../bootstrap/scss/accordion";
+@import "./../bootstrap/scss/breadcrumb";
+@import "./../bootstrap/scss/pagination";
+@import "./../bootstrap/scss/badge";
+@import "./../bootstrap/scss/alert";
+@import "./../bootstrap/scss/progress";
+@import "./../bootstrap/scss/list-group";
+@import "./../bootstrap/scss/close";
+@import "./../bootstrap/scss/toasts";
+@import "./../bootstrap/scss/modal";
+@import "./../bootstrap/scss/tooltip";
+@import "./../bootstrap/scss/popover";
+@import "./../bootstrap/scss/carousel";
+@import "./../bootstrap/scss/spinners";
+
+// Helpers
+
+@import "./../bootstrap/scss/helpers";
+
+// Utilities
+
+@import "./../bootstrap/scss/utilities/api";
+
+//
+// ------------------------------------------------------------------------
+// Bootstrap enhanced features
+// ------------------------------------------------------------------------
+//
+
+//
+// Components
+//
+
+@import "./bootstrap/components/badge";
+@import "./bootstrap/components/button-group";
+@import "./bootstrap/components/card";
+@import "./bootstrap/components/navs";
+@import "./bootstrap/components/pagination";
+@import "./bootstrap/components/tooltips";
+
+//
+// Forms
+//
+
+@import "./bootstrap/forms/form-control";
+@import "./bootstrap/forms/form-check";
+@import "./bootstrap/forms/form-range";
+@import "./bootstrap/forms/form-select";
+@import "./bootstrap/forms/form-text";
+@import "./bootstrap/forms/input-group";
+@import "./bootstrap/forms/inputs-transparent";
+@import "./bootstrap/forms/labels";
+
+//
+// Utilities
+//
+
+@import "./bootstrap/utilities/background-color";
+@import "./bootstrap/utilities/border";
+@import "./bootstrap/utilities/helpers";
+@import "./bootstrap/utilities/overflow";
+@import "./bootstrap/utilities/sizing";
+@import "./bootstrap/utilities/text-color";
+@import "./bootstrap/utilities/z-index";
+
+//
+// ------------------------------------------------------------------------
+// Torus Kit features
+// ------------------------------------------------------------------------
+//
+
+//
+// ------------------------------------------------------------------------
+// Utilities
+// ------------------------------------------------------------------------
+//
+
+@import "./toruskit/utilities/cursor";
+@import "./toruskit/utilities/fluid-size";
+@import "./toruskit/utilities/opacity";
+@import "./toruskit/utilities/overlay";
+@import "./toruskit/utilities/position";

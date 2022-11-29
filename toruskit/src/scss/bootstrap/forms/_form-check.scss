@@ -1,0 +1,69 @@
+//
+// Form check
+//
+
+.form-check-input {
+  background-clip: padding-box;
+  box-shadow: 0 0 0 0 transparent;
+  overflow: hidden;
+
+  @-moz-document url-prefix() {
+    rotate: 0.001deg;
+  }
+
+  // Pseudo element background to fix the artifacts caused by `padding-box`
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 2px transparent;
+    display: block;
+    border-radius: inherit;
+    transform: scale(1.1);
+    transition: .15s box-shadow ease-in-out;
+  }
+
+  @if $form-check-input-animation {
+    background-position-y: -1em;
+  }
+
+  &:active {
+    will-change: background-position;
+  }
+
+  &:checked {
+    @if $form-check-input-animation {
+      background-position-y: 0em;
+    }
+
+    &:before {
+      box-shadow: inset 0 0 0 2px $component-active-bg;
+    }
+  }
+
+  &:checked:focus {
+    box-shadow: $form-check-input-checked-box-shadow;
+  }
+
+  &:focus {
+    box-shadow: $form-check-input-focus-box-shadow;
+  }
+
+  &:hover:not(:disabled) {
+    cursor: $form-check-input-cursor;
+  }
+}
+
+.form-check-input[type="checkbox"]:indeterminate {
+  background-position-y: 0;
+}
+
+
+// Dark form
+
+.form-dark {
+  .form-check-label {
+    color: $form-dark-check-label-color;
+  }
+}

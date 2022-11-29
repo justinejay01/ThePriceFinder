@@ -1,0 +1,39 @@
+.pagination {
+  align-items: center;
+
+  &.pagination-flush {
+    .page-link {
+      border-color: transparent;
+    }
+  }
+
+  &.pagination-gap,
+  &.pagination-flush {
+    .page-link {
+      border-radius: $pagination-link-border-radius;
+      margin-left: $pagination-link-margin-x;
+      margin-right: $pagination-link-margin-x;
+    }
+  }
+}
+
+.page-item {
+  position: relative;
+  z-index: 0;
+
+  &.active {
+    z-index: 1;
+
+    .page-link {
+      box-shadow: $pagination-active-shadow;
+    }
+  }
+}
+
+.page-link {
+  transition: $pagination-transition;
+
+  i {
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,10 @@
+%global-opacity {
+  opacity: var(--tor-opacity);
+}
+
+@each $variant, $value in $alpha-values {
+  .opacity-#{$variant} {
+    --tor-opacity: #{$value} !important;
+    @extend %global-opacity;
+  }
+}

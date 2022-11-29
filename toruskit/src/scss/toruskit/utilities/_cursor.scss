@@ -1,0 +1,13 @@
+$utilities: (
+  "cursor": (
+    property: cursor,
+    values: (
+      pointer: pointer,
+      na: not-allowed,
+      zoom-in: zoom-in,
+      zoom-out: zoom-out,
+    ),
+  )
+);
+
+@import "../../bootstrap/utilities/call-utilities-api";

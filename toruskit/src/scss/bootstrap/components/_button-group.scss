@@ -1,0 +1,37 @@
+.btn-group {
+  border-radius: $btn-group-border-radius;
+
+  > .btn {
+    box-shadow: none;
+
+    + .btn:not([class*="btn-outline"]) {
+      margin-left: 0;
+    }
+  }
+
+  &.rounded-pill {
+    .btn {
+      &:first-child {
+        border-top-left-radius: $border-radius-pill;
+        border-bottom-left-radius: $border-radius-pill;
+        padding-left: 1rem;
+      }
+      &:last-child {
+        border-top-right-radius: $border-radius-pill;
+        border-bottom-right-radius: $border-radius-pill;
+        padding-right: 1rem;
+
+        &.btn-arrow {
+          padding-right: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.btn-group-vertical {
+
+  > .btn {
+    box-shadow: none;
+  }
+}

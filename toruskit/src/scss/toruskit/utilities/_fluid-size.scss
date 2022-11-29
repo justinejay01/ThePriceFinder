@@ -1,0 +1,74 @@
+$directions: (
+  "t": "top",
+  "e": "right",
+  "b": "bottom",
+  "s": "left",
+);
+
+@each $spacer-suffix, $value in $spacers {
+
+  // Padding
+
+  .f\.p-#{$spacer-suffix} {
+    padding: fluid-size($value) !important;
+  }
+
+  // Padding X
+
+  .f\.px-#{$spacer-suffix} {
+    padding-left: fluid-size($value) !important;
+    padding-right: fluid-size($value) !important;
+  }
+
+  // Padding Y
+
+  .f\.py-#{$spacer-suffix} {
+    padding-top: fluid-size($value) !important;
+    padding-bottom: fluid-size($value) !important;
+  }
+
+  // Padding directions
+
+  @each $direction-suffix, $direction-property in $directions {
+    .f\.p#{$direction-suffix}-#{$spacer-suffix} {
+      padding-#{$direction-property}: fluid-size($value) !important;
+    }
+  }
+
+  // Margin
+
+  .f\.m-#{$spacer-suffix} {
+    margin: fluid-size($value) !important;
+  }
+
+  // Margin X
+
+  .f\.mx-#{$spacer-suffix} {
+    margin-left: fluid-size($value) !important;
+    margin-right: fluid-size($value) !important;
+  }
+
+  // Margin Y
+
+  .f\.my-#{$spacer-suffix} {
+    margin-top: fluid-size($value) !important;
+    margin-bottom: fluid-size($value) !important;
+  }
+
+  // Margin directions
+
+  @each $direction-suffix, $direction-property in $directions {
+    .f\.m#{$direction-suffix}-#{$spacer-suffix} {
+      margin-#{$direction-property}: fluid-size($value) !important;
+    }
+  }
+
+}
+
+//
+// CSS Calculation
+//
+//   --tor-ff\.vmin: calc( (var(--tor-ffs) - 1) * 0.5vmin );
+//   --tor-ff\.vmax: calc( (var(--tor-ffs) - 1) * 0.5vmax );
+//   --tor-ff\.base: calc( 1rem + ((var(--tor-ffs) - 1) * 0.15rem));
+//   font-size: calc(var(--tor-ff\.base) + var(--tor-ff\.vmin) + var(--tor-ff\.vmax));

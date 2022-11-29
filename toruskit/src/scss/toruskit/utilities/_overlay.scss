@@ -1,0 +1,108 @@
+.overlay,
+.overlay-gradient {
+  position: relative;
+
+  &:before {
+    --tor-overlay-color: #{$overlay-bg};
+    --tor-overlay-opacity: #{$overlay-opacity};
+    --tor-overlay-hover: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    opacity: calc(var(--tor-overlay-opacity) + var(--tor-overlay-hover));
+    border-radius: inherit;
+    transition: inherit;
+    z-index: 1;
+  }
+}
+
+.overlay {
+  &:before {
+    background-color: var(--tor-overlay-color);
+  }
+}
+
+//
+// ------------------------------------------------------------------------
+// Content
+// ------------------------------------------------------------------------
+//
+
+.overlay-content {
+  display: flex;
+  position: absolute;
+  padding: 1rem;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+//
+// ------------------------------------------------------------------------
+// Gradient
+// ------------------------------------------------------------------------
+//
+
+.overlay-gradient {
+  &:before {
+    background-image: linear-gradient(transparent, var(--tor-overlay-color));
+  }
+}
+
+//
+// ------------------------------------------------------------------------
+// Intensity
+// ------------------------------------------------------------------------
+//
+
+.overlay-intensity-sm::before {
+  --tor-overlay-opacity: .4;
+}
+
+.overlay-intensity-lg::before {
+  --tor-overlay-opacity: .8;
+}
+
+//
+// ------------------------------------------------------------------------
+// Colors
+// ------------------------------------------------------------------------
+//
+
+.overlay-primary::before {
+  --tor-overlay-color: #{$primary};
+}
+
+.overlay-secondary::before {
+  --tor-overlay-color: #{$secondary};
+}
+
+.overlay-light::before {
+  --tor-overlay-color: #{$white};
+}
+
+//
+// ------------------------------------------------------------------------
+// Hover
+// ------------------------------------------------------------------------
+//
+
+.overlay,
+.overlay-gradient {
+  &.overlay-hover {
+    &:before {
+      transition: opacity .2s ease;
+    }
+
+    &:hover {
+      &:before {
+        --tor-overlay-hover: 0.2;
+      }
+    }
+  }
+}

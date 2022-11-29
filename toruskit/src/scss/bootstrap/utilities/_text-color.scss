@@ -1,0 +1,93 @@
+@each $name, $value in $all-colors {
+  .text-#{$name} {
+    --tor-text-opacity: 1;
+  }
+}
+
+$utilities: (
+  "color": (
+    property: color,
+    class: text,
+    values: map-merge($theme-colors, $text-colors-hsla),
+  ),
+);
+
+@import "call-utilities-api";
+
+//
+// Opacity parameter
+//
+
+@each $variant, $value in $alpha-values {
+  .text-opacity-#{$variant} {
+    --tor-text-opacity: #{$value} !important;
+  }
+}
+
+//
+// Lighten
+//
+
+@each $variant, $value in $color-shading {
+  .text-lighten-#{$variant} {
+    --tor-text-lightness: #{1 + $value} !important;
+  }
+}
+
+//
+// Darken
+//
+
+@each $variant, $value in $color-shading {
+  .text-darken-#{$variant} {
+    --tor-text-lightness: #{1 - $value} !important;
+  }
+}
+
+.text-muted {
+  $h: #{str-replace(#{round(hue($text-muted))}, "deg", "")};
+  $s: #{round(saturation($text-muted))};
+  $l: #{round(lightness($text-muted))};
+  $a: #{alpha($text-muted)};
+
+  --tor-text-opacity: #{$a};
+  --tor-text-lightness: 1;
+  color: hsla($h, $s, calc(#{$l} * var(--tor-text-lightness, 1)), var(--tor-text-opacity, 1) ) !important;
+}
+
+.text-body {
+  $h: #{str-replace(#{round(hue($body-color))}, "deg", "")};
+  $s: #{round(saturation($body-color))};
+  $l: #{round(lightness($body-color))};
+  $a: #{alpha($body-color)};
+
+  --tor-text-opacity: #{$a};
+  --tor-text-lightness: 1;
+  color: hsla($h, $s, calc(#{$l} * var(--tor-text-lightness, 1)), var(--tor-text-opacity, 1) ) !important;
+}
+
+.text-body-light {
+  $h: #{str-replace(#{round(hue($body-color-light))}, "deg", "")};
+  $s: #{round(saturation($body-color-light))};
+  $l: #{round(lightness($body-color-light))};
+  $a: #{alpha($body-color-light)};
+
+  --tor-text-opacity: #{$a};
+  --tor-text-lightness: 1;
+  color: hsla($h, $s, calc(#{$l} * var(--tor-text-lightness, 1)), var(--tor-text-opacity, 1) ) !important;
+}
+
+.text-muted-light {
+  $h: #{str-replace(#{round(hue($text-muted-light))}, "deg", "")};
+  $s: #{round(saturation($text-muted-light))};
+  $l: #{round(lightness($text-muted-light))};
+  $a: #{alpha($text-muted-light)};
+
+  --tor-text-opacity: #{$a};
+  --tor-text-lightness: 1;
+  color: hsla($h, $s, calc(#{$l} * var(--tor-text-lightness, 1)), var(--tor-text-opacity, 1) ) !important;
+}
+
+.text-inherit {
+  color: inherit !important;
+}

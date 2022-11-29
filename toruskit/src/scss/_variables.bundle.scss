@@ -1,0 +1,709 @@
+//
+// ------------------------------------------------------------------------
+// THEME COLORS
+// ------------------------------------------------------------------------
+//
+
+// Color system
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+) !default;
+
+$blue:      #1f44ff !default;
+$indigo:    #6610f2 !default;
+$navy:      #001f3f !default; // New Torus Kit color
+$maroon:    #85144b !default; // New Torus Kit color
+$brown:     #806248 !default; // New Torus Kit color
+$purple:    #6f42c1 !default;
+$pink:      #d63384 !default;
+$magenta:   #f012be !default; // New Torus Kit color
+$red:       #dc3545 !default;
+$orange:    #fd7e14 !default;
+$yellow:    #ffc107 !default;
+$lime:      #01ff70 !default; // New Torus Kit color
+$green:     #198754 !default;
+$teal:      #20c997 !default;
+$cyan:      #0dcaf0 !default;
+
+$primary:   $blue !default;
+$secondary: $gray-600 !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+$light:     $gray-100 !default;
+$dark:      $gray-800 !default;
+$gray:      $gray-400 !default;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "gray":       $gray,
+) !default;
+
+//
+// New colors
+//
+
+$new-colors: () !default;
+$new-colors: (
+  "navy":     $navy,
+  "maroon":   $maroon,
+  "brown":    $brown,
+  "magenta":  $magenta,
+  "lime":     $lime,
+  "black":    $black,
+);
+
+//
+// Colors
+//
+
+$colors: (
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-500,
+  "gray-dark":  $gray-800,
+) !default;
+
+$theme-colors-hsla:   () !default;
+$all-colors:          () !default;
+$bg-colors-hsla:      () !default;
+$border-colors-hsla:  () !default;
+$text-colors-hsla:    () !default;
+
+//
+// Text colors
+//
+
+$body-color:          rgba($black, .7) !default;
+$body-color-light:    rgba($white, .8) !default;
+$text-muted:          rgba($black, .5);
+$text-muted-light:    rgba($white, .5);
+
+//
+// Components
+//
+
+$component-active-color:  $white !default;
+$component-active-bg:     $primary !default;
+
+//
+// Alpha values
+//
+
+$alpha-values: () !default;
+$alpha-values: (
+  0: 0,
+  5: .05,
+  10: .1,
+  20: .2,
+  30: .3,
+  40: .4,
+  50: .5,
+  60: .6,
+  70: .7,
+  80: .8,
+  90: .9,
+  100: 1
+);
+
+//
+// ------------------------------------------------------------------------
+// OPTIONS
+// ------------------------------------------------------------------------
+//
+
+$enable-extended-color-palette:   true !default;
+$enable-shadows:                  true !default;
+$enable-negative-margins:         true !default;
+$enable-popover-animations:       true !default;
+
+//
+// ------------------------------------------------------------------------
+// UTILITIES
+// ------------------------------------------------------------------------
+//
+
+//
+// Borders
+//
+
+// Border radius
+
+$border-radius-xs:      .125rem !default;
+$border-radius-sm:      .2rem !default;
+$border-radius:         .25rem !default;
+$border-radius-lg:      .3rem !default;
+$border-radius-xl:      .5rem !default;
+$border-radius-xxl:     .75rem !default;
+$border-radius-pill:    50rem !default;
+$border-radius-circle:  50% !default;
+
+$shadow-size-xs:      var(--tor-shadow-offsetX, 0rem) calc(0.125rem + var(--tor-shadow-offsetY, 0rem))  0.1875rem !default;
+$shadow-size-sm:      var(--tor-shadow-offsetX, 0rem) calc(0.125rem + var(--tor-shadow-offsetY, 0rem)) 0.375rem !default;
+$shadow-size:         var(--tor-shadow-offsetX, 0rem) calc(0.25rem + var(--tor-shadow-offsetY, 0rem)) 0.625rem !default;
+$shadow-size-lg:      var(--tor-shadow-offsetX, 0rem) calc(0.25rem + var(--tor-shadow-offsetY, 0rem)) 1.5rem !default;
+$shadow-size-xl:      var(--tor-shadow-offsetX, 0rem) calc(0.75rem + var(--tor-shadow-offsetY, 0rem)) 2rem !default;
+$shadow-size-pop:     var(--tor-shadow-offsetX, 0rem) calc(1.5rem + var(--tor-shadow-offsetY, 0rem)) 5.5rem !default;
+$shadow-size-risen:   var(--tor-shadow-offsetX, 0rem) calc(1.5rem + var(--tor-shadow-offsetY, 0rem)) 1rem -1rem !default;
+
+$shadow-opacity-xs:     0.1 !default;
+$shadow-opacity-sm:     0.15 !default;
+$shadow-opacity:        0.15 !default;
+$shadow-opacity-md:     0.15 !default;
+$shadow-opacity-lg:     0.25 !default;
+$shadow-opacity-xl:     0.25 !default;
+$shadow-opacity-pop:    0.5 !default;
+$shadow-opacity-risen:  0.3 !default;
+
+$shadow-xs:           $shadow-size-xs rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-xs} * var(--tor-shadow-intensity))) !default;
+$shadow-sm:           $shadow-size-sm rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-sm} * var(--tor-shadow-intensity))) !default;
+$shadow:              $shadow-size rgba(var(--tor-shadow-color), calc(#{$shadow-opacity} * var(--tor-shadow-intensity))) !default;
+$shadow-lg:           $shadow-size-lg rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-lg} * var(--tor-shadow-intensity))) !default;
+$shadow-xl:           $shadow-size-xl rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-xl} * var(--tor-shadow-intensity))) !default;
+$shadow-pop:          $shadow-size-pop rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-pop} * var(--tor-shadow-intensity))) !default;
+$shadow-risen:        $shadow-size-risen rgba(var(--tor-shadow-color), calc(#{$shadow-opacity-risen} * var(--tor-shadow-intensity))) !default;
+$shadow-transparent:  0 0 0 transparent !default;
+
+$shadows: () !default;
+$shadows: (
+  null:       var(--tor-shadow-inset) $shadow,
+  xs:         var(--tor-shadow-inset) $shadow-xs,
+  sm:         var(--tor-shadow-inset) $shadow-sm,
+  lg:         var(--tor-shadow-inset) $shadow-lg,
+  xl:         var(--tor-shadow-inset) $shadow-xl,
+  pop:        var(--tor-shadow-inset) $shadow-pop,
+  risen:      var(--tor-shadow-inset) $shadow-risen,
+  no:          none,
+);
+
+$shadow-offset: () !default;
+$shadow-offset: (
+  xs: 0.25rem,
+  sm: 0.5rem,
+  md: 1rem,
+  lg: 2rem,
+  xl: 4rem,
+);
+
+$shadow-intensity: () !default;
+$shadow-intensity: (
+  xs: 0.25,
+  sm: 0.5,
+  md: 1,
+  lg: 2,
+  xl: 3,
+);
+
+//
+// Box shadow
+//
+
+$box-shadow-intensity-light:    .5;
+$box-shadow-intensity:          1;
+$box-shadow-intensity-strong:   2;
+
+$box-shadow-xs:     0 0.125rem 0.1875rem rgba($black, $shadow-opacity-xs) !default;
+$box-shadow-sm:     0 0.125rem 0.375rem rgba($black, $shadow-opacity-sm) !default;
+$box-shadow:        0 0.25rem 0.625rem rgba($black, $shadow-opacity) !default;
+$box-shadow-lg:     0 0.25rem 1.5rem rgba($black, $shadow-opacity-lg) !default;
+$box-shadow-xl:     0 0.75rem 2rem rgba($black, $shadow-opacity-xl) !default;
+$box-shadow-pop:    0 1.5rem 5.5rem rgba($black, $shadow-opacity-pop) !default;
+$box-shadow-risen:  0 1.5rem 1rem -1rem rgba($black, $shadow-opacity-risen) !default;
+$box-shadow-inset:  inset 0 1px 2px rgba($black, .075) !default;
+
+//
+// Color
+//
+// Color palette extend
+// Merges default $colors and $theme-colors with $new-colors
+//
+
+@if $enable-extended-color-palette {
+  $colors:      map-merge($colors, $new-colors);
+  $all-colors:  map-merge($colors, $theme-colors);
+}
+@else {
+  $all-colors:  $theme-colors;
+}
+
+@each $name, $value in $all-colors {
+  $h: #{str-replace(#{round(hue($value))}, "deg", "")};
+  $s: #{round(saturation($value))};
+  $l: #{round(lightness($value))};
+
+  $hsla-bg:           hsla($h, $s, calc(#{$l} * var(--tor-bg-lightness, 1)), var(--tor-bg-opacity, 1) );
+  $hsla-border:       hsla($h, $s, $l, var(--tor-border-opacity, 1) );
+  $hsla-text:         hsla($h, $s, calc(#{$l} * var(--tor-text-lightness, 1)), var(--tor-text-opacity, 1) );
+
+  $update-bg:         ($name: $hsla-bg);
+  $update-border:     ($name: $hsla-border);
+  $update-text:       ($name: $hsla-text);
+
+  $bg-colors-hsla:      map-merge($bg-colors-hsla, $update-bg);
+  $border-colors-hsla:  map-merge($border-colors-hsla, $update-border);
+  $text-colors-hsla:    map-merge($text-colors-hsla, $update-text);
+}
+
+//
+// Height in REM for width-*rem and height-*rem
+//
+
+$height-rem: () !default;
+$height-rem: (
+  0rem,
+  5rem,
+  10rem,
+  15rem,
+  20rem,
+  25rem,
+  30rem,
+  35rem,
+  40rem,
+  45rem,
+  50rem,
+);
+
+//
+// Shading colors steps
+// Values for lighten-* and darken-* class
+//
+
+$color-shading: () !default;
+$color-shading: (
+  xs: 0.1,
+  sm: 0.2,
+  md: 0.3,
+  lg: 0.4,
+  xl: 0.5,
+);
+
+//
+// Push element
+//
+
+$push-percents: () !default;
+$push-percents: (
+  50:  50%,
+  100: 100%,
+);
+
+//
+// Transitions
+//
+
+$transition-duration:               350ms !default;
+$transition-duration-quad:          450ms !default;
+$transition-duration-exponential:   600ms !default;
+$transition-duration-bounce:        500ms !default;
+$transition-duration-ease-out:      700ms !default;
+
+$transition-timing:                     cubic-bezier(.35,0,.1,1) !default;
+$transition-timing-quad:                cubic-bezier(0.23, 0, 0, 1) !default;
+$transition-timing-quartic:             cubic-bezier(.77,0,.18,1) !default;
+$transition-timing-exponential:         cubic-bezier(.9, 0, .1, 1) !default;
+$transition-timing-bounce:              cubic-bezier(.4, 0, 0, 1.4) !default;
+$transition-timing-bounce-exponential:  cubic-bezier(.9,0,0,1.3) !default;
+$transition-timing-ease-out:            cubic-bezier(0, .2, .15, 1) !default;
+$transition-timing-linear:              linear !default;
+
+$transition:                $transition-duration $transition-timing !default;
+$transition-exponential:    $transition-duration-exponential $transition-timing-exponential !default;
+$transition-quad:           $transition-duration-quad $transition-timing-quad !default;
+$transition-bounce:         $transition-duration-bounce $transition-timing-bounce !default;
+$transition-linear:         $transition-duration $transition-timing-linear !default;
+
+$transition-duration-multiplier: () !default;
+$transition-duration-multiplier: (
+  fastest:  .45,
+  faster:   .6,
+  fast:     .85,
+  slow:     2,
+  slower:   3,
+  slowest:  4,
+);
+
+//
+// Spacers
+//
+
+$spacer: 1rem !default;
+
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 2),
+  6: ($spacer * 3),
+  7: ($spacer * 5),
+  8: ($spacer * 10),
+);
+
+$sizes-percents: () !default;
+$sizes-percents: (
+  10:  10%,
+  20:  20%,
+  25:  25%,
+  30:  30%,
+  33:  33.333%,
+  40:  40%,
+  50:  50%,
+  60:  60%,
+  66:  66.666%,
+  70:  70%,
+  75:  75%,
+  80:  80%,
+  90:  90%,
+  100:  100%,
+  auto:  auto,
+);
+
+//
+// Z-index
+//
+
+$zindex: () !default;
+$zindex: (
+  n2: -2,
+  n1: -1,
+  0:  0,
+  1:  1,
+  2:  2,
+  99: 99,
+);
+
+$zindex-toast-canvas:   1080;
+$zindex-master:         1090;
+
+//
+// ------------------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------------------
+//
+
+//
+// Has icon
+//
+
+$has-icon-padding:    0.5rem !default;
+
+//
+// Link colors
+//
+
+$links-dark-color:          rgba($black, .8) !default;
+$links-dark-hover-color:    rgba($black, .9) !default;
+$links-light-color:         rgba($white, .85) !default;
+$links-light-hover-color:   rgba($white, 1) !default;
+
+//
+// ------------------------------------------------------------------------
+// INPUTS, FORMS
+// ------------------------------------------------------------------------
+//
+
+$input-bg:                          $white !default;
+
+$input-btn-focus-width:             .2rem !default;
+$input-btn-focus-color-opacity:    .15 !default;
+$input-btn-focus-color:             $gray-600 !default;
+$input-btn-focus-box-shadow-color:  rgba($input-btn-focus-color, $input-btn-focus-color-opacity) !default;
+$input-btn-focus-box-shadow:        0 0 0 $input-btn-focus-width $input-btn-focus-box-shadow-color, $box-shadow !default;
+
+$input-border-color:                rgba($black, .15) !default;
+$input-border-radius:               $border-radius-sm !default;
+$input-border-radius-sm:            $border-radius-xs !default;
+$input-border-radius-lg:            $border-radius !default;
+
+$input-focus-border-color:          rgba($black, .25) !default;
+$input-hover-border-color:          $input-focus-border-color !default;
+
+$input-placeholder-color:           rgba($black, .5);
+
+$inputs-transparent-form-control-focus-bg:    $input-bg !default;
+$inputs-transparent-input-placeholder-color:  rgba($white, .5);
+
+$input-transition:                  background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$form-check-input-checked-color:   $component-active-color !default;
+
+$form-check-input-focus-box-shadow-width:     $input-btn-focus-width !default;
+$form-check-input-focus-box-shadow-opacity:   0.05 !default;
+$form-check-input-focus-box-shadow-color:     rgba($black, $form-check-input-focus-box-shadow-opacity) !default;
+$form-check-input-focus-box-shadow:           0 0 0 $form-check-input-focus-box-shadow-width $form-check-input-focus-box-shadow-color !default;
+
+$form-check-input-checked-box-shadow-width:           $input-btn-focus-width !default;
+$form-check-input-checked-box-shadow-color-opacity:   $input-btn-focus-color-opacity !default;
+$form-check-input-checked-box-shadow-color:           rgba($component-active-bg, $form-check-input-checked-box-shadow-color-opacity) !default;
+$form-check-input-checked-box-shadow:                 0 0 0 $form-check-input-checked-box-shadow-width $form-check-input-checked-box-shadow-color !default;
+
+$form-check-input-cursor:           pointer !default;
+$form-check-label-cursor:           null !default;
+$form-check-transition:             background-color .15s ease-in-out, background-position 0.35s cubic-bezier(.2,.0,.05,1.5), border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$form-check-input-active-filter:    brightness(95%) !default;
+$form-check-input-animation:        true !default;
+
+$form-select-box-shadow:            $box-shadow-xs !default;
+$form-select-cursor:                pointer !default;
+$form-select-hover-border-color:    $input-focus-border-color !default;
+$form-select-transition:            background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, color .15s ease-in-out !default;
+$form-select-focus-box-shadow:      $input-btn-focus-box-shadow !default;
+
+$form-range-track-box-shadow:       0 0 0 0 transparent !default;
+
+// Form dark
+
+$form-dark-text-color:              $text-muted-light !default;
+$form-dark-label-color:             $white !default;
+$form-dark-input-color:             $white !default;
+
+$form-dark-check-label-color:       $form-dark-label-color !default;
+$form-dark-check-active-bg:         rgba($white, .2) !default;
+
+$form-dark-switch-color:            rgba($white, .6) !default;
+$form-dark-switch-focus-color:      rgba($white, .8) !default;
+
+$form-dark-switch-bg-image:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-dark-switch-color}'/></svg>") !default;
+$form-dark-switch-focus-bg-image:   url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-dark-switch-focus-color}'/></svg>") !default;
+
+$form-dark-inputs-transparent-border-color:         rgba($white, .75) !default;
+$form-dark-inputs-transparent-focus-border-color:   rgba($white, 1) !default;
+$form-dark-inputs-transparent-hover-border-color:   $form-dark-inputs-transparent-focus-border-color !default;
+
+$form-dark-select-indicator-color:      rgba($white, 75) !default;
+$form-dark-select-indicator:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-dark-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
+
+$input-group-addon-bg:                #f2f2f2 !default;
+
+//
+// ------------------------------------------------------------------------
+// COMPONENTS
+// ------------------------------------------------------------------------
+//
+
+//
+// Alerts
+//
+
+$alert-padding-y:             .8rem !default;
+$alert-border-width:          0 !default;
+$alert-bg-level:              -9.5 !default;
+$alert-color-level:           4 !default;
+$alert-transition-duration:  500ms !default;
+
+//
+// Badges
+//
+
+$badge-border-radius:               .2em !default;
+$badge-font-weight:                 500 !default;
+$badge-font-size:                   75% !default;
+$badge-padding-y:                   .325em !default;
+$badge-padding-x:                   .425em !default;
+$badge-pill-padding-x:              .75rem !default;
+
+//
+// Breadcrumb
+//
+
+$breadcrumb-item-color:             $black !default;
+$breadcrumb-item-hover-color:       $breadcrumb-item-color !default;
+$breadcrumb-item-opacity:           .6 !default;
+$breadcrumb-item-hover-opacity:     .8 !default;
+
+//
+// Buttons
+//
+
+$btn-box-shadow:              0 0 0 0 transparent !default;
+$btn-active-box-shadow:       0 2px 8px rgba($black, 0.05) !default;
+$btn-focus-box-shadow:        $btn-active-box-shadow !default;
+
+$btn-rounded-pill-padding-x:  1rem !default;
+
+$btn-soft-box-shadow:         none !default;
+$btn-soft-intensity:          10 !default;
+$btn-soft-hover-intensity:    8 !default;
+
+$btn-indicator-color:         currentColor !default;
+$btn-indicator-opacity:       .7 !default;
+$btn-indicator-size:          .7em !default;
+$btn-indicator-margin-x:      .5rem !default;
+$btn-indicator-translate-x:  .25rem !default;
+$btn-indicator-arrow:         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.5' height='9.5'%3E%3Cpath d='M10.3 4.2l-4-4C6-.1 5.5-.1 5.2.2s-.3.8 0 1.1L7.9 4H.8c-.5 0-.8.3-.8.8s.3.8.8.8H8L5.2 8.2c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l4-4c.4-.3.4-.8.1-1.1z'/%3E%3C/svg%3E") !default;
+$btn-indicator-arrow-left:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.5' height='9.5'%3E%3Cpath d='M.2 4.2l4-4c.3-.3.8-.3 1.1 0s.3.8 0 1.1L2.6 4h7.2c.4 0 .8.3.8.8s-.3.8-.8.8H2.6l2.7 2.7c.3.3.3.8 0 1.1-.2 0-.4.1-.5.1s-.4-.1-.6-.2l-4-4c-.3-.3-.3-.8 0-1.1z'/%3E%3C/svg%3E") !default;
+$btn-indicator-chevron:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5.5' height='9.5'%3E%3Cpath d='M.8 9.5c-.2 0-.4-.1-.5-.2C0 9 0 8.5.3 8.2l3.5-3.5L.2 1.3C-.1 1-.1.5.2.2S1-.1 1.3.2l4 4c.3.3.3.8 0 1.1l-4 4c-.2.1-.4.2-.5.2z'/%3E%3C/svg%3E") !default;
+$btn-indicator-chevron-left:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5.5' height='9.5'%3E%3Cpath d='M4.8 9.5c.2 0 .4-.1.5-.2.3-.3.3-.8 0-1.1L1.8 4.8l3.5-3.5c.3-.3.3-.8 0-1.1s-.8-.3-1.1 0l-4 4c-.3.3-.3.8 0 1.1l4 4c.2.1.4.2.6.2z'/%3E%3C/svg%3E") !default;
+
+//
+// Button group
+//
+
+$btn-group-border-radius:  $border-radius-sm !default;
+
+//
+// Cards
+//
+
+$card-shadow:             $box-shadow-sm !default;
+$card-margin-bottom:      1rem !default;
+
+//
+// Carousel
+//
+
+$carousel-control-shadow:                 0 2px 6px rgba($black, 0.8) !default;
+
+$carousel-indicator-dot-color:            $white !default;
+$carousel-indicator-dot-size:             10px !default;
+$carousel-indicator-dot-spacing:          4px !default;
+$carousel-indicator-hover-opacity:        .7 !default;
+
+$carousel-transition-timing-function:     $transition-timing-quartic !default;
+
+//
+// Close
+//
+
+$close-icon:            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 10 10'%3E%3Cpath d='M5.8 4.8l3.5-3.5c.3-.3.3-.8 0-1.1s-.8-.3-1.1 0L4.8 3.7 1.3.2C1-.1.5-.1.2.2s-.3.8 0 1.1l3.5 3.5L.2 8.2c-.3.3-.3.8 0 1.1.1.1.3.2.5.2s.4-.1.5-.2l3.5-3.5 3.5 3.5c.1.1.3.2.5.2s.4-.1.5-.2c.3-.3.3-.8 0-1.1L5.8 4.8z'/%3E%3C/svg%3E") !default;
+$close-icon-padding-x:  0.25rem !default;
+$close-icon-padding-y:  0rem !default;
+
+//
+// Collapse
+//
+
+$transition-collapse:                         height .35s $transition-timing-quartic !default;
+
+//
+// Dropdowns
+//
+
+$dropdown-padding-x:            .25rem;
+$dropdown-padding-y:            .25rem;
+$dropdown-border-width:         0 !default;
+$dropdown-box-shadow:           $box-shadow-pop !default;
+$dropdown-link-hover-bg:        rgba($black, .08) !default;
+$dropdown-divider-bg:           rgba($black, .15) !default;
+$dropdown-item-padding-x:       1rem !default;
+$dropdown-item-border-radius:   $border-radius-xs;
+
+//
+// Modals
+//
+
+$modal-content-border-width:      0 !default;
+$modal-content-box-shadow-sm-up:  $box-shadow-pop !default;
+$modal-custom-position-margin:    1rem !default;
+
+// Because data-position="middle/center" uses CSS transform for vertical alignment,
+// it disables default Bootstrap translateY. It needs to be set manually again.
+// Default Bootstrap's translateY for modal animation is -50px
+$modal-shift-y:      -50px !default;
+
+//
+// Navs
+//
+
+$nav-link-padding-y:                          .625rem !default;
+$nav-link-padding-x:                          1.125rem !default;
+$nav-link-disabled-color:                     $gray-500 !default;
+$nav-link-transition:                         color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, opacity .15s ease-in-out !default;
+$nav-tabs-link-active-shadow:                 0 -.25rem .375rem -.125rem rgba($black, .1);
+
+$nav-style-opacity-link-opacity:              .65 !default;
+$nav-style-opacity-link-active-opacity:       1 !default;
+$nav-style-opacity-link-hover-opacity:        .85 !default;
+
+$nav-style-shadow-link-active-shadow:         $box-shadow !default;
+$nav-style-shadow-link-hover-shadow:          $box-shadow-sm !default;
+
+$nav-style-strikeout-underline-line-color:    currentColor !default;
+$nav-style-strikeout-underline-transition:    transform $transition-duration-quad $transition-timing-quartic !default;
+
+//
+// Overlay
+//
+
+$overlay-bg:        $black !default;
+$overlay-opacity:   0.6 !default;
+
+//
+// Pagination
+//
+
+$pagination-padding-x:            .85rem !default;
+$pagination-padding-x-sm:         .65rem !default;
+$pagination-color:                $text-muted !default;
+$pagination-transition:           $transition !default;
+
+$pagination-link-border-radius:   $border-radius !default;
+$pagination-link-margin-x:        .125rem !default;
+
+$pagination-hover-color:          $black !default;
+
+$pagination-focus-box-shadow:     $input-btn-focus-box-shadow !default;
+
+$pagination-active-bg:            $component-active-bg !default;
+$pagination-active-border-color:  $pagination-active-bg !default;
+$pagination-active-shadow:        $box-shadow-lg !default;
+
+$pagination-disabled-color:       $gray-400 !default;
+
+//
+// Popovers
+//
+
+$popover-box-shadow:     $box-shadow-lg !default;
+
+//
+// Tooltips
+//
+
+$tooltip-shadow:       $box-shadow-lg;
+
+//
+// Toast
+//
+
+$toast-transition-duration:     .5s;
+$toast-box-shadow:              $box-shadow-lg;

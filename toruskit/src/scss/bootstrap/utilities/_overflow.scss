@@ -1,0 +1,23 @@
+$utilities: (
+  "overflow": (
+    responsive: true,
+    property: overflow,
+    values: visible hidden auto,
+  ),
+  "overflow-x": (
+    responsive: true,
+    property: overflow-x,
+    values: visible hidden auto,
+  ),
+  "overflow-y": (
+    responsive: true,
+    property: overflow-y,
+    values: visible hidden auto,
+  ),
+);
+
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+@import "call-utilities-api";

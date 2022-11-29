@@ -1,0 +1,29 @@
+//
+// Input group
+//
+
+// Removes the overlapping borders
+
+.input-group-text {
+  background-clip: padding-box;
+  transition: .15s background-color;
+}
+
+.input-group-text {
+  + .form-control {
+    border-left-color: transparent;
+  }
+}
+
+.form-control {
+  + .input-group-text {
+    border-left-color: transparent;
+  }
+}
+
+.form-dark {
+  .input-group-text {
+    border-color: $form-dark-inputs-transparent-border-color;
+    color: $form-dark-input-color;
+  }
+}
