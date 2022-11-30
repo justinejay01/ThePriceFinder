@@ -57,7 +57,10 @@ include_once "connect.php";
                         <button class="btn btn-primary">Go</button>
                     </div>
                 </form>
+            </div>
+        </div>
 
+        <div class="row">
                 <?php
                 $s = isset($_GET['s']) ? $_GET['s']: '';
 
@@ -67,29 +70,24 @@ include_once "connect.php";
                     
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) { ?>
-                            <div class="card mt-2">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="https://dummyimage.com/220x220/000/fff" class="card-img-top img-responsive" alt="...">
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <div class="card mt-2">
+                                    <img src="https://dummyimage.com/220x220/000/fff" class="card-img-top img-responsive" alt="...">
+                                    <div class="card-body">
+                                        <p class = "card-title align-middle"><?php echo $row["name"]; ?></p>
                                     </div>
-                                    <div class="col-md-10">
-                                        <div class="card-header d-flex">
-                                            <h4 class = "card-title align-middle"><?php echo $row["name"]; ?></h4>
-                                            <h4 class = "card-title ms-auto">&#8369;<?php echo $row["price"]; ?></h4>
-                                        </div>
-                                        <div class="card-body d-flex">
-                                            <h6 class="card-text"><?php echo $row["id"]; ?></h6>
-                                            <?php
-                                            $a = $row["is_available"];
-                                            if ($a == "1") {
-                                                echo "<span class='badge bg-success ms-auto p-2'>Available</span>";
-                                            } else {
-                                                echo "<span class='badge bg-danger ms-auto p-2'>Sold Out</span>";
-                                            } ?>
-                                        </div>
+                                    <div class="card-footer d-flex">
+                                        <h4 class = "card-text">&#8369;<?php echo $row["price"]; ?></h4>
+                                        <h6 class="card-text d-none"><?php echo $row["id"]; ?></h6>
+                                        <?php
+                                        $a = $row["is_available"];
+                                        if ($a == "1") {
+                                            echo "<span class='badge bg-success ms-auto p-2'>Available</span>";
+                                        } else {
+                                            echo "<span class='badge bg-danger ms-auto p-2'>Sold Out</span>";
+                                        } ?>
                                     </div>
                                 </div>
-                                
                             </div>
                             <?php
                         }
@@ -100,20 +98,23 @@ include_once "connect.php";
                     
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) { ?>
-                            <div class="card mt-2">
-                                <div class="card-header d-flex">
-                                    <h4 class="card-title"><?php echo $row["name"];?></h4>
-                                    <h4 class = "card-title ms-auto">&#8369;<?php echo $row["price"]; ?></h4>
-                                </div>
-                                <div class="card-body d-flex">
-                                    <h6 class="card-text"><?php echo $row["id"]; ?></h6>
-                                    <?php
-                                    $a = $row["is_available"];
-                                    if ($a == "1") {
-                                        echo "<span class='badge bg-success ms-auto p-2 align-middle'>Available</span>";
-                                    } else {
-                                        echo "<span class='badge bg-danger ms-auto p-2 align-middle'>Sold Out</span>";
-                                    }?>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <div class="card mt-2">
+                                    <img src="https://dummyimage.com/220x220/000/fff" class="card-img-top img-responsive" alt="...">
+                                    <div class="card-body">
+                                        <p class = "card-title align-middle"><?php echo $row["name"]; ?></p>
+                                    </div>
+                                    <div class="card-footer d-flex">
+                                        <h4 class = "card-text">&#8369;<?php echo $row["price"]; ?></h4>
+                                        <h6 class="card-text d-none"><?php echo $row["id"]; ?></h6>
+                                        <?php
+                                        $a = $row["is_available"];
+                                        if ($a == "1") {
+                                            echo "<span class='badge bg-success ms-auto p-2'>Available</span>";
+                                        } else {
+                                            echo "<span class='badge bg-danger ms-auto p-2'>Sold Out</span>";
+                                        } ?>
+                                    </div>
                                 </div>
                             </div>
                             <?php
