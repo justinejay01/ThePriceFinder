@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "connect.php";
-require "password_compat/lib/password.php";
 
 $u = isset($_POST['u']) ? $_POST['u']: '';
 $p = isset($_POST['p']) ? $_POST['p']: '';

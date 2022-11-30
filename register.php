@@ -1,7 +1,6 @@
 <?php
 
 require_once "connect.php";
-require "password_compat/lib/password.php";
 
 $u = isset($_POST['u']) ? $_POST['u']: '';
 $p = isset($_POST['p']) ? $_POST['p']: '';
@@ -17,7 +16,7 @@ if ($result->num_rows > 0) {
     $if_exist = true;
 }
 
-if ($if_exist == false) {
+if (!$if_exist) {
     $sql = "INSERT INTO accounts (username, password) VALUES ('". $u ."', '". $p_hash ."')";
     if ($conn->query($sql) === TRUE) {
         echo "2";

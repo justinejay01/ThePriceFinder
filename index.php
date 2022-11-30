@@ -27,8 +27,12 @@ include_once "connect.php";
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             -->
             <ul class="navbar-nav">
-            <li class="nav-item">
-                    <a class="nav-link" href="shop-list.php">Your Shopping List</a>
+                <li class="nav-item">
+                    <?php if (isset($_SESSION["uid"])) {
+                        echo '<a class="nav-link" href="dashboard.php">Dashboard</a>';
+                    } else {
+                        echo '<a class="nav-link" href="shop-list.php">Your Shopping List</a>';
+                    } ?>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
