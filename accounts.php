@@ -65,23 +65,28 @@ include_once "connect.php";
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Query</th>
-                            <th>Count</th>
+                            <th class="d-none">ID</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $sql = "SELECT name, count(*) AS cnt FROM search GROUP BY name ORDER BY cnt DESC";
+                    <?php $sql = "SELECT uid, username FROM accounts ORDER BY uid ASC";
                         $result = $conn->query($sql);
-                        $i = 1;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {?>
                                 <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $row["name"]; ?></td>
-                                    <td><?php echo $row["cnt"]; ?></td>
+                                    <td class="d-none" id="<?php echo $row["uid"] ?>"><?php echo $row["uid"] ?></td>
+                                    <td><?php echo $row["username"]; ?></td>
+                                    <td>
+                                        <a href="reset_account.php" class="btn btn-sm btn-outline-danger">Reset</a>
+                                    </td>
+                                    <td>
+                                        <a href="delete_account.php" class="btn btn-sm btn-outline-danger">Delete</a>
+                                    </td>
                                 </tr>
-                            <?php $i++;
+                            <?php
                             }
                         } else {
                             echo "<p>Not available</p>";
