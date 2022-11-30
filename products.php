@@ -55,52 +55,46 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary active">Home</a>
-                    <a href="products.php" class="btn btn-outline-primary">Products</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary">Home</a>
+                    <a href="products.php" class="btn btn-outline-primary active">Products</a>
                     <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Summary</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Products</h5>
-                                <span class='badge bg-success ms-auto'>0</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Accounts</h5>
-                                <span class='badge bg-success ms-auto'>0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h4>Most Search Query</h4>
+                <h1>Products</h1>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Query</th>
-                            <th>Count</th>
+                            <th class="d-none">ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $sql = "SELECT name, count(*) AS cnt FROM search GROUP BY name ORDER BY cnt DESC";
+                        <?php $sql = "SELECT id, name, price, is_available FROM products ORDER BY name ASC";
                         $result = $conn->query($sql);
-                        $i = 1;
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {?>
                                 <tr>
-                                    <td><?php echo $i; ?></td>
+                                    <td class="d-none" id="<?php echo $row["id"] ?>"><?php echo $row["id"] ?></td>
                                     <td><?php echo $row["name"]; ?></td>
-                                    <td><?php echo $row["cnt"]; ?></td>
+                                    <td>&#8369;<?php echo $row["price"]; ?></td>
+                                    <td><?php $a = $row["is_available"];
+                                    if ($a == "1") {
+                                        echo "<span class='badge bg-success ms-auto p-2'>Available</span>";
+                                    } else {
+                                        echo "<span class='badge bg-danger ms-auto p-2'>Sold Out</span>";
+                                    } ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="edit_product.php" class="btn btn-sm btn-outline-primary">Edit</a>
+                                            <a href="delete_product.php" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        </div>
+                                    </td>
                                 </tr>
-                            <?php $i++;
+                            <?php
                             }
                         } else {
                             echo "<p>Not available</p>";

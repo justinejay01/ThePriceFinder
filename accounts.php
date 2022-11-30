@@ -55,32 +55,13 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary active">Home</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary">Home</a>
                     <a href="products.php" class="btn btn-outline-primary">Products</a>
-                    <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
+                    <a href="accounts.php" class="btn btn-outline-primary active">Accounts</a>
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Summary</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Products</h5>
-                                <span class='badge bg-success ms-auto'>0</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Accounts</h5>
-                                <span class='badge bg-success ms-auto'>0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h4>Most Search Query</h4>
+                <h1>Accounts</h1>
                 <table class="table table-hover">
                     <thead>
                         <tr>
