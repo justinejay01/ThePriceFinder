@@ -55,7 +55,7 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary active">Home</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary active">Dashboard</a>
                     <a href="products.php" class="btn btn-outline-primary">Products</a>
                     <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
                 </div>

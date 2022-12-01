@@ -14,6 +14,21 @@
 
 <?php
 include_once "connect.php";
+
+$id = isset($_POST["id"]) ? $_POST["id"]: '';
+$name = isset($_POST["name"]) ? $_POST["name"]: '';
+$price = isset($_POST["price"]) ? $_POST["price"]: '';
+$is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
+
+if (isset($_POST["name"])) {
+    $sql = "INSERT INTO products (id, name, price, is_available) VALUES ('". $id ."', '". $name ."', " . $price . ", '". $is_available ."')";
+    if ($conn->query($sql) === TRUE) {
+        echo "";
+    } else {
+        echo "0";
+    }
+
+}
 ?>
 
 <body>
@@ -55,17 +70,34 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary">Home</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary">Dashboard</a>
                     <a href="products.php" class="btn btn-outline-primary active">Products</a>
                     <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
                 </div>
             </div>
             <div class="col-lg-9">
                 <h1>Add Products</h1>
+                <div class="alert alert-success alert-dismissible d-none">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Success!</strong> Product added to the database!
+                </div>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Error!</strong> There's a problem adding to the database! Please check your network!
+                </div>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <label for="prod_id" class="form_label mt-2">Product ID / Barcode: </label>
                     <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id">
-                    <input type="text" class="form-control" placeholder="" id="prod_id" name="id">
-                    <button class="btn btn-primary mt-2">Add</button>
+                    <label for="prod_name" class="form_label mt-2">Product Name: </label>
+                    <input type="text" class="form-control" placeholder="Product Name" id="prod_name" name="name">
+                    <label for="prod_price" class="form_label mt-2">Product Price: </label>
+                    <input type="number" class="form-control" placeholder="Price" id="prod_price" name="price">
+                    <label for="is_available" class="form_label mt-2">Availability: </label>
+                    <select class="form-select" name="is_available" id="is_available">
+                        <option value="1">Available</option>
+                        <option value="0">Sold Out</option>
+                    </select>
+                    <button class="btn btn-primary mt-3 w-100" type="submit">Add</button>
                 </form>
             </div>
         </div>
@@ -93,6 +125,10 @@ include_once "connect.php";
     </div>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <?php
+    
+    ?>
 </body>
 
 </html>

@@ -55,13 +55,14 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary">Home</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary">Dashboard</a>
                     <a href="products.php" class="btn btn-outline-primary active">Products</a>
                     <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
                 </div>
             </div>
             <div class="col-lg-9">
                 <h1>Products</h1>
+                <a href="add_product.php" class="btn btn-primary">Add Product</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
