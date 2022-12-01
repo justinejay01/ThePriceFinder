@@ -55,77 +55,18 @@ include_once "connect.php";
         <div class="row">
             <div class="col-lg-3">
                 <div class="btn-group-vertical w-100">
-                    <a href="dashboard.php" class="btn btn-outline-primary active">Home</a>
-                    <a href="products.php" class="btn btn-outline-primary">Products</a>
+                    <a href="dashboard.php" class="btn btn-outline-primary">Home</a>
+                    <a href="products.php" class="btn btn-outline-primary active">Products</a>
                     <a href="accounts.php" class="btn btn-outline-primary">Accounts</a>
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Summary</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Products</h5>
-                                <?php 
-                                $sql = "SELECT count(*) AS cnt FROM products";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<span class='badge bg-success ms-auto'>" . $row["cnt"] . "</span>";
-                                    }
-                                } else {
-                                    echo "<span class='badge bg-success ms-auto'>0</span>";
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body d-flex">
-                                <h5 class="card-title">Accounts</h5>
-                                <?php 
-                                $sql = "SELECT count(*) AS cnt FROM accounts";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<span class='badge bg-success ms-auto'>" . $row["cnt"] . "</span>";
-                                    }
-                                } else {
-                                    echo "<span class='badge bg-success ms-auto'>0</span>";
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h4>Most Search Query</h4>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Query</th>
-                            <th>Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $sql = "SELECT name, count(*) AS cnt FROM search GROUP BY name ORDER BY cnt DESC";
-                        $result = $conn->query($sql);
-                        $i = 1;
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {?>
-                                <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $row["name"]; ?></td>
-                                    <td><?php echo $row["cnt"]; ?></td>
-                                </tr>
-                            <?php $i++;
-                            }
-                        } else {
-                            echo "<p>Not available</p>";
-                        } ?>
-                    </tbody>
-                </table>
+                <h1>Add Products</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id">
+                    <input type="text" class="form-control" placeholder="" id="prod_id" name="id">
+                    <button class="btn btn-primary mt-2">Add</button>
+                </form>
             </div>
         </div>
     </div>

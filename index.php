@@ -28,7 +28,7 @@ include_once "connect.php";
             -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <?php if (isset($_SESSION["uid"])) {
+                    <?php if (isset($_SESSION["uid"]) && $_SESSION["uid"] == "10001") {
                         echo '<a class="nav-link" href="dashboard.php">Dashboard</a>';
                     } else {
                         echo '<a class="nav-link" href="shop-list.php">Your Shopping List</a>';
