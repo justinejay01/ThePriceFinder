@@ -96,7 +96,12 @@ include_once "connect.php";
                             <?php
                         }
                     }
-                } else {
+                } else {                    
+                    $sql = "INSERT INTO search (name) VALUES ('". $s ."')";
+                    if ($conn->query($sql) === FALSE) {
+                       echo "";
+                    }
+
                     $sql = "SELECT id, name, price, is_available FROM products WHERE id LIKE '%". $s ."%' or name LIKE '%". $s ."%'";
                     $result = $conn->query($sql);
                     

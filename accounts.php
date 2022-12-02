@@ -109,9 +109,11 @@ include_once "connect.php";
         <div class="modal-body">
             <h5>Are you sure you want to logout?</h5>
         </div>
-        <div class="modal-footer">
-            <a href="logout.php" class="btn btn-secondary">Yes</a>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+        <<div class="modal-footer">
+            <form action="logout.php" method="get">
+                <button type="submit" class="btn btn-secondary me-2">Yes</a>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+            </form>
         </div>
 
         </div>
