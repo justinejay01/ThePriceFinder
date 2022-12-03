@@ -10,6 +10,7 @@
 
     <!--Bootstrap-->
     <link href="toruskit/dist/css/toruskit.bundle.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <?php
@@ -19,7 +20,7 @@ include_once "connect.php";
 <body>
     <nav class="navbar navbar-expand-sm mr-auto">
         <div class="container">
-            <a class="navbar-brand" href="index.php">ThePriceFinder</a>
+            <a class="navbar-brand" href="index.php" data-text="ThePriceFinder" id="title">ThePriceFinder</a>
             <!--
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
