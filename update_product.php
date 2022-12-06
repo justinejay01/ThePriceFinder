@@ -19,25 +19,14 @@ $id = isset($_POST["id"]) ? $_POST["id"]: '';
 $name = isset($_POST["name"]) ? $_POST["name"]: '';
 $price = isset($_POST["price"]) ? $_POST["price"]: '';
 $is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
-$if_exist = 0;
 
-$sql = "SELECT id FROM products WHERE id='". $id ."'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $if_exist = true;
-}
-
-if (!$if_exist) {
-    if (isset($_POST["id"])) {
-        $sql = "INSERT INTO products (id, name, price, is_available) VALUES ('". $id ."', '". $name ."', " . $price . ", '". $is_available ."')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location: products.php");
-        } else {
-            echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
-        }
+if (isset($_POST["name"])) {
+    $sql = "UPDATE products SET name = '". $name ."', price = " . $price . ", is_available = '". $is_available ."' WHERE id = '" . $id . "'";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: products.php");
+    } else {
+        echo "<script>alert('There's a problem updating to the database! Please check your network!')</script>";
     }
-} else {
-    echo "<script>alert('Product already exist in the database!')</script>";
 }
 ?>
 
@@ -86,20 +75,31 @@ if (!$if_exist) {
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Add Product</h1>
+                <h1>Update Product</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <?php 
+                    $p = isset($_POST["p"]) ? $_POST["p"]: '';
+
+                    $sql = "SELECT id, name, price, is_available FROM products WHERE id = '" . $p . "'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {?>
                     <label for="prod_id" class="form_label mt-2">Product ID / Barcode: </label>
-                    <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id" required>
+                    <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id" value="<?php echo $row["id"] ?>" readonly>
                     <label for="prod_name" class="form_label mt-2">Product Name: </label>
-                    <input type="text" class="form-control" placeholder="Product Name" id="prod_name" name="name" required>
+                    <input type="text" class="form-control" placeholder="Product Name" id="prod_name" name="name" value="<?php echo $row["name"] ?>" required>
                     <label for="prod_price" class="form_label mt-2">Product Price: </label>
-                    <input type="number" class="form-control" placeholder="Price" id="prod_price" name="price" required>
+                    <input type="number" class="form-control" placeholder="Price" id="prod_price" name="price" value="<?php echo $row["price"] ?>" required>
                     <label for="is_available" class="form_label mt-2">Availability: </label>
+                    <?php $a = $row["is_available"]; ?>
                     <select class="form-select" name="is_available" id="is_available">
-                        <option value="1">Available</option>
-                        <option value="0">Sold Out</option>
+                        <option value="1" <?php if ($a == "1") { echo "selected"; } ?>>Available</option>
+                        <option value="0" <?php if ($a == "0") { echo "selected"; } ?>>Sold Out</option>
                     </select>
-                    <button class="btn btn-primary mt-3 w-100" type="submit">Add</button>
+                    <?php }
+                    }
+                    ?>
+                    <button class="btn btn-primary mt-3 w-100" type="submit">Update</button>
                 </form>
             </div>
         </div>
@@ -129,10 +129,6 @@ if (!$if_exist) {
     </div>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <?php
-    
-    ?>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+
+
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,29 +17,17 @@
 <?php
 include_once "connect.php";
 
-$id = isset($_POST["id"]) ? $_POST["id"]: '';
-$name = isset($_POST["name"]) ? $_POST["name"]: '';
-$price = isset($_POST["price"]) ? $_POST["price"]: '';
-$is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
-$if_exist = 0;
+$p = isset($_POST["p"]) ? $_POST["p"]: '';
+$n = isset($_POST["n"]) ? $_POST["n"]: '';
 
-$sql = "SELECT id FROM products WHERE id='". $id ."'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $if_exist = true;
-}
-
-if (!$if_exist) {
-    if (isset($_POST["id"])) {
-        $sql = "INSERT INTO products (id, name, price, is_available) VALUES ('". $id ."', '". $name ."', " . $price . ", '". $is_available ."')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location: products.php");
-        } else {
-            echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
-        }
+$d = isset($_POST["d"]) ? $_POST["d"]: '';
+if (isset($_POST["d"])) {
+    $sql = "DELETE FROM products WHERE id = '". $d ."'";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: products.php");
+    } else {
+        echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
     }
-} else {
-    echo "<script>alert('Product already exist in the database!')</script>";
 }
 ?>
 
@@ -86,20 +76,12 @@ if (!$if_exist) {
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Add Product</h1>
+                <h1>Delete Product</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <label for="prod_id" class="form_label mt-2">Product ID / Barcode: </label>
-                    <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id" required>
-                    <label for="prod_name" class="form_label mt-2">Product Name: </label>
-                    <input type="text" class="form-control" placeholder="Product Name" id="prod_name" name="name" required>
-                    <label for="prod_price" class="form_label mt-2">Product Price: </label>
-                    <input type="number" class="form-control" placeholder="Price" id="prod_price" name="price" required>
-                    <label for="is_available" class="form_label mt-2">Availability: </label>
-                    <select class="form-select" name="is_available" id="is_available">
-                        <option value="1">Available</option>
-                        <option value="0">Sold Out</option>
-                    </select>
-                    <button class="btn btn-primary mt-3 w-100" type="submit">Add</button>
+                    <p>Are you sure you want to delete this product "<?php echo $n; ?>"?</p>
+                    <input type="hidden" name="d" value="<?php echo $p ?>"></input>
+                    <button class="btn btn-danger mt-3 w-100" type="submit">Delete</button>
+                    <button class="btn btn-primary mt-2 w-100" type="button" onclick="location.href='products.php'">Back</button>
                 </form>
             </div>
         </div>
@@ -123,7 +105,6 @@ if (!$if_exist) {
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
             </form>
         </div>
-
         </div>
     </div>
     </div>

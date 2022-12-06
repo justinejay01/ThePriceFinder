@@ -10,7 +10,6 @@
 
     <!--Bootstrap-->
     <link href="toruskit/dist/css/toruskit.bundle.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <?php

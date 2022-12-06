@@ -14,6 +14,7 @@
 
 <?php
 include_once "connect.php";
+$a = "0";
 ?>
 
 <body>
@@ -79,7 +80,7 @@ include_once "connect.php";
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {?>
                                 <tr>
-                                    <td class="d-none" id="<?php echo $row["id"] ?>"><?php echo $row["id"] ?></td>
+                                    <td class="prod_id d-none"><?php echo $row["id"] ?></td>
                                     <td><?php echo $row["name"]; ?></td>
                                     <td>&#8369;<?php echo $row["price"]; ?></td>
                                     <td><?php $a = $row["is_available"];
@@ -90,8 +91,15 @@ include_once "connect.php";
                                     } ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="edit_product.php" class="btn btn-sm btn-outline-primary">Edit</a>
-                                            <a href="delete_product.php" class="btn btn-sm btn-outline-danger">Delete</a>
+                                            <form action="update_product.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["id"] ?>"></input>
+                                                <button class="btn btn-sm btn-outline-primary">Update</a>
+                                            </form>
+                                            <form action="delete_product.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["id"] ?>"></input>
+                                                <input type="hidden" name="n" value="<?php echo $row["name"] ?>"></input>
+                                                <button class="btn btn-sm btn-outline-danger">Delete</a>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -113,21 +121,32 @@ include_once "connect.php";
 
     <!-- Logout -->
     <div class="modal" id="mLogout">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-body">
-            <h5>Are you sure you want to logout?</h5>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h6>Are you sure you want to logout?</h6>
+                </div>
+                <div class="modal-footer">
+                    <form action="logout.php" method="get">
+                        <button type="submit" class="btn btn-secondary me-2">Yes</a>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-            <a href="logout.php" class="btn btn-secondary">Yes</a>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-        </div>
+    </div>
 
-        </div>
-    </div>
-    </div>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+    <!--<script>
+        $(".update_btn").click(function() {
+            var $r = $(this).closest("tr");
+            var $t = $r.find(".prod_id").text();
+
+            alert($t);
+        })
+    </script>-->
 </body>
 
 </html>
