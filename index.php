@@ -30,16 +30,14 @@ include_once "connect.php";
                 <li class="nav-item">
                     <?php if (isset($_SESSION["uid"]) && $_SESSION["uid"] == "10001") {
                         echo '<a class="nav-link" href="dashboard.php">Dashboard</a>';
-                    } else {
-                        echo '<a class="nav-link" href="shop-list.php">Your Shopping List</a>';
                     } ?>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
-                </li>
+                </li>-->
                     <?php if (isset($_SESSION["uid"])) {
                         echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php" role="button" data-bs-toggle="dropdown">'. $_SESSION["uid"] .'</a><ul class="dropdown-menu">
                         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#mLogout">Logout</a></li></ul></li>';
@@ -138,7 +136,7 @@ include_once "connect.php";
 
     <footer class="footer fixed-bottom text-center py-4">
         <div class="container"><small>Copyright 2022 &copy; <a href="index.php"
-                    class="text-decoration-none">ThePriceFinder</a><a href="version.php" class="text-decoration-none"> v1-alpha1</a></small></div>
+                    class="text-decoration-none">ThePriceFinder</a></small></div>
     </footer>
 
     <!-- Logout -->
