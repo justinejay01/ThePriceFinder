@@ -49,7 +49,7 @@ if(isset($_POST["update_prod"])) {
             -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <?php if (isset($_SESSION["uid"]) && $_SESSION["uid"] == "10001") {
+                    <?php if (isset($_SESSION["uid"]) ) {
                         echo '<a class="nav-link" href="dashboard.php">Dashboard</a>';
                     } ?>
                 </li>
@@ -81,7 +81,7 @@ if(isset($_POST["update_prod"])) {
             </div>
             <div class="col-lg-9">
                 <h1>Update Product</h1>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
                     <?php 
                     $p = isset($_POST["p"]) ? $_POST["p"]: '';
 

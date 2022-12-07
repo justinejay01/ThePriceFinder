@@ -60,7 +60,12 @@ include_once "connect.php";
             </div>
             <div class="col-lg-9">
                 <h1>Accounts</h1>
-                <a href="add_account.php" class="btn btn-primary">Add Account</a>
+                <?php 
+                    if (isset($_SESSION["uid"]) && $_SESSION["uid"] == "10001") { ?>
+                    <a href="add_account.php" class="btn btn-primary">Add Account</a>
+                    <?php }
+                ?>
+                
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -71,33 +76,67 @@ include_once "connect.php";
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $sql = "SELECT uid, username FROM accounts ORDER BY uid ASC";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {?>
-                                <tr>
-                                    <td class="d-none" id="<?php echo $row["uid"] ?>"><?php echo $row["uid"] ?></td>
-                                    <td><?php echo $row["username"]; ?></td>
-                                    <td>
-                                    <form action="reset_account.php" method="post">
-                                        <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
-                                        <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Reset</button>
-                                    </form>
-                                    </td>
-                                    <td>
-                                    <form action="delete_account.php" method="post">
-                                        <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
-                                        <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                    </form>
-                                    </td>
-                                </tr>
-                            <?php
+                    <?php 
+                        if (isset($_SESSION["uid"])) {
+                            if ($_SESSION["uid"] == "10001") {
+                                $sql = "SELECT uid, username FROM accounts ORDER BY uid ASC";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {?>
+                                        <tr>
+                                            <td class="d-none" id="<?php echo $row["uid"] ?>"><?php echo $row["uid"] ?></td>
+                                            <td><?php echo $row["username"]; ?></td>
+                                            <td>
+                                            <form action="reset_account.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
+                                                <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Reset</button>
+                                            </form>
+                                            </td>
+                                            <td>
+                                            <form action="delete_account.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
+                                                <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                            </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                } else {
+                                    echo "<p>Not available</p>";
+                                }
+                            } else {
+                                $sql = "SELECT uid, username FROM accounts WHERE uid = '" . $_SESSION["uid"] . "' ORDER BY uid ASC";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {?>
+                                        <tr>
+                                            <td class="d-none" id="<?php echo $row["uid"] ?>"><?php echo $row["uid"] ?></td>
+                                            <td><?php echo $row["username"]; ?></td>
+                                            <td>
+                                            <form action="reset_account.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
+                                                <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Reset</button>
+                                            </form>
+                                            </td>
+                                            <td>
+                                            <form action="delete_account.php" method="post">
+                                                <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
+                                                <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                            </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                } else {
+                                    echo "<p>Not available</p>";
+                                }
                             }
-                        } else {
-                            echo "<p>Not available</p>";
-                        } ?>
+                        }
+                         ?>
                     </tbody>
                 </table>
             </div>
