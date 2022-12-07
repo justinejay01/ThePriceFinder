@@ -1,3 +1,5 @@
+
+
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThePriceFinder - Accounts</title>
+    <title>ThePriceFinder - Home</title>
 
     <!--Bootstrap-->
     <link href="toruskit/dist/css/toruskit.bundle.css" rel="stylesheet">
@@ -14,6 +16,19 @@
 
 <?php
 include_once "connect.php";
+
+$p = isset($_POST["p"]) ? $_POST["p"]: '';
+$n = isset($_POST["n"]) ? $_POST["n"]: '';
+
+$d = isset($_POST["d"]) ? $_POST["d"]: '';
+if (isset($_POST["d"])) {
+    $sql = "DELETE FROM accounts WHERE uid = '". $d ."'";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: accounts.php");
+    } else {
+        echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
+    }
+}
 ?>
 
 <body>
@@ -30,8 +45,6 @@ include_once "connect.php";
                 <li class="nav-item">
                     <?php if (isset($_SESSION["uid"])) {
                         echo '<a class="nav-link" href="dashboard.php">Dashboard</a>';
-                    } else {
-                        echo '<a class="nav-link" href="shop-list.php">Your Shopping List</a>';
                     } ?>
                 </li>
                 <li class="nav-item">
@@ -61,47 +74,13 @@ include_once "connect.php";
                 </div>
             </div>
             <div class="col-lg-9">
-                <h1>Accounts</h1>
-                <a href="add_account.php" class="btn btn-primary">Add Account</a>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="d-none">ID</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php $sql = "SELECT uid, username FROM accounts ORDER BY uid ASC";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {?>
-                                <tr>
-                                    <td class="d-none" id="<?php echo $row["uid"] ?>"><?php echo $row["uid"] ?></td>
-                                    <td><?php echo $row["username"]; ?></td>
-                                    <td>
-                                    <form action="reset_account.php" method="post">
-                                        <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
-                                        <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Reset</button>
-                                    </form>
-                                    </td>
-                                    <td>
-                                    <form action="delete_account.php" method="post">
-                                        <input type="hidden" name="p" value="<?php echo $row["uid"] ?>"></input>
-                                        <input type="hidden" name="n" value="<?php echo $row["username"] ?>"></input>
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                    </form>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                        } else {
-                            echo "<p>Not available</p>";
-                        } ?>
-                    </tbody>
-                </table>
+                <h1>Delete Product</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <p>Are you sure you want to delete this account "<?php echo $n; ?>"?</p>
+                    <input type="hidden" name="d" value="<?php echo $p ?>"></input>
+                    <button class="btn btn-danger mt-3 w-100" type="submit">Delete</button>
+                    <button class="btn btn-primary mt-2 w-100" type="button" onclick="location.href='accounts.php'">Back</button>
+                </form>
             </div>
         </div>
     </div>
@@ -118,18 +97,21 @@ include_once "connect.php";
         <div class="modal-body">
             <h5>Are you sure you want to logout?</h5>
         </div>
-        <<div class="modal-footer">
+        <div class="modal-footer">
             <form action="logout.php" method="get">
                 <button type="submit" class="btn btn-secondary me-2">Yes</a>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
             </form>
         </div>
-
         </div>
     </div>
     </div>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <?php
+    
+    ?>
 </body>
 
 </html>

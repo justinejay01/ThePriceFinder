@@ -15,29 +15,35 @@
 <?php
 include_once "connect.php";
 
-$id = isset($_POST["id"]) ? $_POST["id"]: '';
-$name = isset($_POST["name"]) ? $_POST["name"]: '';
-$price = isset($_POST["price"]) ? $_POST["price"]: '';
-$is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
-$if_exist = 0;
+if(isset($_POST["add_prod"])) {
+    $id = isset($_POST["id"]) ? $_POST["id"]: '';
+    $name = isset($_POST["name"]) ? $_POST["name"]: '';
+    $price = isset($_POST["price"]) ? $_POST["price"]: '';
+    $is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
+    $if_exist = 0;
 
-$sql = "SELECT id FROM products WHERE id='". $id ."'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $if_exist = true;
-}
-
-if (!$if_exist) {
-    if (isset($_POST["id"])) {
-        $sql = "INSERT INTO products (id, name, price, is_available) VALUES ('". $id ."', '". $name ."', " . $price . ", '". $is_available ."')";
-        if ($conn->query($sql) === TRUE) {
-            header("Location: products.php");
-        } else {
-            echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
-        }
+    $filename = $_FILES["prod_img"]["name"];
+    $tempname = $_FILES["prod_img"]["tmp_name"];  
+    $folder = "static/img/".$filename; 
+    $sql = "SELECT id FROM products WHERE id='". $id ."'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $if_exist = true;
     }
-} else {
-    echo "<script>alert('Product already exist in the database!')</script>";
+    
+    if (!$if_exist) {
+        if (isset($_POST["id"])) {
+            $sql = "INSERT INTO products (id, name, price, is_available, img) VALUES ('". $id ."', '". $name ."', " . $price . ", '". $is_available ."', '" . $folder . "')";
+            if ($conn->query($sql) === TRUE) {
+                move_uploaded_file($tempname, $folder);
+                header("Location: products.php");
+            } else {
+                echo "<script>alert('There's a problem adding to the database! Please check your network!')</script>";
+            }
+        }
+    } else {
+        echo "<script>alert('Product already exist in the database!')</script>";
+    }
 }
 ?>
 
@@ -87,7 +93,7 @@ if (!$if_exist) {
             </div>
             <div class="col-lg-9">
                 <h1>Add Product</h1>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
                     <label for="prod_id" class="form_label mt-2">Product ID / Barcode: </label>
                     <input type="text" class="form-control" placeholder="Product ID / Barcode" id="prod_id" name="id" required>
                     <label for="prod_name" class="form_label mt-2">Product Name: </label>
@@ -99,7 +105,9 @@ if (!$if_exist) {
                         <option value="1">Available</option>
                         <option value="0">Sold Out</option>
                     </select>
-                    <button class="btn btn-primary mt-3 w-100" type="submit">Add</button>
+                    <label for="prod_img" class="form_label mt-2">Image: </label>
+                    <input type="file" name="prod_img" id="prod_img" class="form-control">
+                    <button class="btn btn-primary mt-3 w-100" type="submit" name="add_prod">Add</button>
                 </form>
             </div>
         </div>

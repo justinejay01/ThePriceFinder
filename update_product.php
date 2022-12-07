@@ -15,17 +15,24 @@
 <?php
 include_once "connect.php";
 
-$id = isset($_POST["id"]) ? $_POST["id"]: '';
-$name = isset($_POST["name"]) ? $_POST["name"]: '';
-$price = isset($_POST["price"]) ? $_POST["price"]: '';
-$is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
+if(isset($_POST["update_prod"])) {
+    $id = isset($_POST["id"]) ? $_POST["id"]: '';
+    $name = isset($_POST["name"]) ? $_POST["name"]: '';
+    $price = isset($_POST["price"]) ? $_POST["price"]: '';
+    $is_available = isset($_POST["is_available"]) ? $_POST["is_available"]: '';
 
-if (isset($_POST["name"])) {
-    $sql = "UPDATE products SET name = '". $name ."', price = " . $price . ", is_available = '". $is_available ."' WHERE id = '" . $id . "'";
-    if ($conn->query($sql) === TRUE) {
-        header("Location: products.php");
-    } else {
-        echo "<script>alert('There's a problem updating to the database! Please check your network!')</script>";
+    $filename = $_FILES["prod_img"]["name"];
+    $tempname = $_FILES["prod_img"]["tmp_name"];  
+    $folder = "static/img/".$filename; 
+
+    if (isset($_POST["name"])) {
+        $sql = "UPDATE products SET name = '". $name ."', price = " . $price . ", is_available = '". $is_available ."', img = '" . $folder . "' WHERE id = '" . $id . "'";
+        if ($conn->query($sql) === TRUE) {
+            move_uploaded_file($tempname, $folder);
+            header("Location: products.php");
+        } else {
+            echo "<script>alert('There's a problem updating to the database! Please check your network!')</script>";
+        }
     }
 }
 ?>
@@ -80,7 +87,7 @@ if (isset($_POST["name"])) {
                     <?php 
                     $p = isset($_POST["p"]) ? $_POST["p"]: '';
 
-                    $sql = "SELECT id, name, price, is_available FROM products WHERE id = '" . $p . "'";
+                    $sql = "SELECT id, name, price, is_available, img FROM products WHERE id = '" . $p . "'";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {?>
@@ -96,10 +103,12 @@ if (isset($_POST["name"])) {
                         <option value="1" <?php if ($a == "1") { echo "selected"; } ?>>Available</option>
                         <option value="0" <?php if ($a == "0") { echo "selected"; } ?>>Sold Out</option>
                     </select>
+                    <label for="prod_img" class="form_label mt-2">Image: </label>
+                    <input type="file" name="prod_img" id="prod_img" class="form-control">
                     <?php }
                     }
                     ?>
-                    <button class="btn btn-primary mt-3 w-100" type="submit">Update</button>
+                    <button class="btn btn-primary mt-3 w-100" type="submit" name="update_prod">Update</button>
                 </form>
             </div>
         </div>

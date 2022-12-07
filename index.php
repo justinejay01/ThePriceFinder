@@ -69,14 +69,14 @@ include_once "connect.php";
                 $s = isset($_GET['s']) ? $_GET['s']: '';
 
                 if (strlen($s) == 0) {
-                    $sql = "SELECT id, name, price, is_available FROM products";
+                    $sql = "SELECT id, name, price, is_available, img FROM products";
                     $result = $conn->query($sql);
                     
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) { ?>
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <div class="card mt-2">
-                                    <img src="https://dummyimage.com/220x220/000/fff" class="card-img-top img-responsive" alt="...">
+                                    <img src="<?php echo $row["img"]?>" class="card-img-top img-responsive" alt="..." style="width: 300px; height: 300px;">
                                     <div class="card-body">
                                         <p class = "card-title align-middle"><?php echo $row["name"]; ?></p>
                                     </div>
@@ -102,14 +102,14 @@ include_once "connect.php";
                        echo "";
                     }
 
-                    $sql = "SELECT id, name, price, is_available FROM products WHERE id LIKE '%". $s ."%' or name LIKE '%". $s ."%'";
+                    $sql = "SELECT id, name, price, is_available, img FROM products WHERE id LIKE '%". $s ."%' or name LIKE '%". $s ."%'";
                     $result = $conn->query($sql);
                     
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) { ?>
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <div class="card mt-2">
-                                    <img src="https://dummyimage.com/220x220/000/fff" class="card-img-top img-responsive" alt="...">
+                                    <img src="<?php echo $row["img"]?>" class="card-img-top img-responsive" alt="...">
                                     <div class="card-body">
                                         <p class = "card-title align-middle"><?php echo $row["name"]; ?></p>
                                     </div>
